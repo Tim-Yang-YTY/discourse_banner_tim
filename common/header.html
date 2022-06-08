@@ -212,14 +212,14 @@
       helper.widget.appEvents.on('page:changed', () => {
           helper.widget.scheduleRerender();
       });
-    const header = helper.widget.parentWidget.parentWidget;
+    
 
-
-    const searchMenuVisible = header.state.searchVisible;
-      if (!searchMenuVisible && !header.attrs.topic && !helper.widget.site.mobileView) {
+    const searchWidget = helper.widget;
+    const searchMenuVisible = searchWidget.state.searchVisible;
+      if (!searchMenuVisible && !searchWidget.attrs.topic && !helper.widget.site.mobileView) {
       return helper.attach("search-menu", {
-        contextEnabled: header.state.contextEnabled,
-        formFactor: "widget",
+        contextEnabled: searchWidget.state.contextEnabled,
+        formFactor: "head",
       });
     }
   });
