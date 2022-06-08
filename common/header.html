@@ -212,12 +212,13 @@
       helper.widget.appEvents.on('page:changed', () => {
           helper.widget.scheduleRerender();
       });
+    const header = helper.widget.parentWidget.parentWidget;
 
-    const searchWidget = helper.widget;
-    const searchMenuVisible = searchWidget.state.searchVisible;
-      if (!searchMenuVisible && !searchWidget.attrs.topic) {
+
+    const searchMenuVisible = header.state.searchVisible;
+      if (!searchMenuVisible && !header.attrs.topic && !helper.widget.site.mobileView) {
       return helper.attach("search-menu", {
-        contextEnabled: searchWidget.state.contextEnabled,
+        contextEnabled: header.state.contextEnabled,
         formFactor: "widget",
       });
     }
